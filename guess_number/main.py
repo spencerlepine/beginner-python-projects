@@ -17,7 +17,8 @@ def guess(x):
 
     print(f"Congrats, you have guessed {random_number}!")
 
-#guess(10)
+print("Find the computers secret number...")
+guess(10)
 
 def computer_guess(x):
     low = 1
@@ -25,8 +26,11 @@ def computer_guess(x):
     feedback = ""
 
     while feedback != "c":
-        # The bounds will be updated each guess
-        guess = random.randint(low, high)
+        if low != high:
+            # The bounds will be updated each guess
+            guess = random.randint(low, high)
+        else:
+            guess = low
 
         feedback = input(f"Is {guess} too high (H), too low (L), or correct (C): ").lower()
 
@@ -37,4 +41,5 @@ def computer_guess(x):
 
     print(f"The computer found your number: {x}")
 
+print("Let the computer guess your secret number")
 computer_guess(int(input("Pick a number greater than 0: ")))

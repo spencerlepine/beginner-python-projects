@@ -1,5 +1,3 @@
-import random
-
 # Player vs Player Tic Tac Toe
 
 def print_board(board):

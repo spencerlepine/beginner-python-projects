@@ -1,10 +1,6 @@
 # Command-line minesweeper game
 #@KylieYing (12 beginner python projects - coding course)
 
-# To do: reveal bombs on death
-# Fix Numbering
-# Add columns
-
 import random
 
 # Create board class
@@ -60,31 +56,35 @@ class Board:
         return surrounding_bombs
 
     def print_game(self):
-        print("   ", end="")
-        for r in range(self.board_size + 1):    
-            for c in range(self.board_size):
-                if r == 0:
-                    if c > 7: 
-                        print(f"_{c+1}", end="")
-                    else:
-                        print(f"_{c+1}_", end="")
-                    
-                else:
-                    if c == 0:
-                        if r > 9:
-                            print(f"{r}|", end="")
-                        else:
-                            print(f"{r} |", end="")
-                
-                    thisSpot = ' '
 
-                    # Shift the row down 1 since column #s are displayed.
-                    if (r-1,c) in self.dug:
-                        thisSpot = self.board[r-1][c]
-                        
-                    print(f" {thisSpot} ", end="")
+
+        
+        
+        print("   ", end="")
+        for c in range(self.board_size):
+            if c > 8: 
+                print(f" {c+1}|", end="")
+            else:
+                print(f" {c+1} |", end="")
+
+        print("\n  -----------------------------------------")
+        for r in range(self.board_size):
+            for c in range(self.board_size):
+                if c == 0:
+                    if r > 10:
+                        print(f"{r}|", end="")
+                    else:
+                        print(f"{r} |", end="")
+            
+                thisSpot = ' '
+
+                if (r,c) in self.dug:
+                    thisSpot = self.board[r][c]
+                    
+                print(f" {thisSpot} |", end="")
 
             print("\n")
+
 
     def dig(self, spot_to_dig):
         r = (spot_to_dig // self.board_size)

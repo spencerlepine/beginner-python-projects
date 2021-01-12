@@ -56,10 +56,6 @@ class Board:
         return surrounding_bombs
 
     def print_game(self):
-
-
-        
-        
         print("   ", end="")
         for c in range(self.board_size):
             if c > 8: 

@@ -1,6 +1,10 @@
 # Command-line minesweeper game
 #@KylieYing (12 beginner python projects - coding course)
 
+# To do: reveal bombs on death
+# Fix Numbering
+# Add columns
+
 import random
 
 # Create board class
@@ -92,6 +96,13 @@ class Board:
 
             # Step 3a: if the location is a bomb, show game over message
             if self.board[r][c] == '*':
+                
+                # Uncover the entire board:
+                for r in range(self.board_size):
+                    for c in range(self.board_size):
+                        self.dug.add((r,c))
+        
+                self.print_game()
                 print('Game over!')
                 return True # Game over is true
 
@@ -123,7 +134,7 @@ class Board:
         if (self.board_size**2 - (len(self.dug))) == self.bomb_count:
             return True
 
-def play(board_size=10, bomb_count=1):
+def play(board_size=10, bomb_count=10):
     # Step 1: create the board and plant the bombs
     board_obj = Board(board_size, bomb_count)
 
